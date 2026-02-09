@@ -1,1 +1,93 @@
-v
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ultra Precise Clock</title>
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+}
+
+.clock{
+    width:260px;
+    height:260px;
+    border:3px solid #aaa;
+    border-radius:50%;
+    position:relative;
+}
+
+.hand{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform-origin:0 50%;
+}
+
+.hour{height:4px;background:white;}
+.minute{height:3px;background:white;}
+.second{height:2px;background:#ff4444;}
+
+.center{
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+</style>
+</head>
+
+<body>
+
+<div class="clock">
+    <div class="hand hour" id="h"></div>
+    <div class="hand minute" id="m"></div>
+    <div class="hand second" id="s"></div>
+    <div class="center"></div>
+</div>
+
+<script>
+const cx = 130;
+const cy = 130;
+
+const Rh = 55;
+const Rm = 80;
+const Rs = 100;
+
+/* Angular velocities (rad/sec) */
+const ωs = 2*Math.PI/60;
+const ωm = 2*Math.PI/3600;
+const ωh = 2*Math.PI/43200;
+
+const start = performance.now()/1000;
+
+function update(){
+    const t = performance.now()/1000 - start;
+
+    const θs = ωs*t - Math.PI/2;
+    const θm = ωm*t - Math.PI/2;
+    const θh = ωh*t - Math.PI/2;
+
+    s.style.width = Rs+"px";
+    m.style.width = Rm+"px";
+    h.style.width = Rh+"px";
+
+    s.style.transform = `rotate(${θs}rad)`;
+    m.style.transform = `rotate(${θm}rad)`;
+    h.style.transform = `rotate(${θh}rad)`;
+
+    requestAnimationFrame(update);
+}
+
+update();
+</script>
+
+</body>
+</html>
