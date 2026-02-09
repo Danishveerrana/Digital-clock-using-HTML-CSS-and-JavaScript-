@@ -1,10 +1,16 @@
 ⏳ Ultra-Precise Analog Clock
+
 Mathematics × Physics × Feather-Light Code 🪶
+
 This project is a pure mathematical analog clock built using real trigonometry, integration, and circle geometry — not UI tricks.
+
 It runs ultra smooth, zero lag, and is so light that it can run nicely even on very low-end systems (512MB RAM).
+
 This clock respects time as a continuous variable, not a jumping one.
 
+
 ✨ What makes this special?
+
 • Uses continuous time (performance.now)
 
 • Uses angular velocity + integration
@@ -46,6 +52,7 @@ x = r cos(θ)
 y = r sin(θ)
 
 This is real physics + geometry, not visual cheating.
+
 🚀 Performance Philosophy
 
 ✔ One requestAnimationFrame()
@@ -73,6 +80,7 @@ That’s why it feels smooth like water 🌊
 • Single HTML file
 
 • Minimal DOM operations
+
 
 
 Your CPU stays cool 😄
